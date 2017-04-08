@@ -139,6 +139,7 @@
     <Content Include="plugins\bass_tta.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Cover.png" />
     <None Include="Resources\Stop.png" />
     <None Include="Resources\Previous.png" />
     <None Include="Resources\Pause.png" />

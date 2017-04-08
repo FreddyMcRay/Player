@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Components;
 using MetroFramework.Forms;
+using MetroFramework.Properties;
 using Un4seen.Bass;
 
 namespace WindowsFormsApplication1
@@ -59,6 +60,7 @@ namespace WindowsFormsApplication1
         {
             if ((PlayList.Items.Count != 0) && (PlayList.SelectedIndex != -1))
             {
+                WorkClass.LastPlayed = PlayList.SelectedIndex;
                 WorkClass.PlayedIndex = PlayList.SelectedIndex;
                 this.PlaylistRefresh();
                 string current = WorkClass.Files[WorkClass.PlayedIndex];
@@ -119,12 +121,10 @@ namespace WindowsFormsApplication1
 
         private void PlaylistRefresh()
         {
-            PlayList.Items.Clear();
-            foreach (string file in WorkClass.Files)
-            {
-                TagReader TR = new TagReader(file);
-                PlayList.Items.Add(TR.artist + "-" + TR.title);
-            }
+            string temp;
+            temp = PlayList.Items[WorkClass.LastPlayed].ToString();
+            PlayList.Items.RemoveAt(WorkClass.LastPlayed);
+            PlayList.Items.Insert(WorkClass.LastPlayed,temp);
         }
 
         private void PlayList_DrawItem(object sender, DrawItemEventArgs e)
@@ -142,14 +142,26 @@ namespace WindowsFormsApplication1
 
         private void SetInfo()
         {
+            
             TagReader TR = new TagReader(WorkClass.Files[WorkClass.PlayedIndex]);
-            Bitmap image = new Bitmap(TR.cover,150,170);
-            CoverImage.Image = image;
-            NameComp.Text = TR.title;
-            Raiting.Text = "Raiting: " + TR.raiting + "%";
-            Channels.Text = "Channels: " + TR.channels;
-            Album.Text = "Album: " + TR.album;
-
+            if (TR.cover != null)
+            {
+                Bitmap image = new Bitmap(TR.cover, 150, 170);
+                CoverImage.Image = image;
+                NameComp.Text = TR.title;
+                Raiting.Text = "Raiting: " + TR.raiting + "%";
+                Channels.Text = "Channels: " + TR.channels;
+                Album.Text = "Album: " + TR.album;
+            }
+            else
+            {
+                Bitmap image = new Bitmap(Properties.Resources.Cover, 150, 170);
+                CoverImage.Image = image;
+                NameComp.Text = TR.title;
+                Raiting.Text = "Raiting: " + TR.raiting + "%";
+                Channels.Text = "Channels: " + TR.channels;
+                Album.Text = "Album: " + TR.album;
+            }
         }
 
         

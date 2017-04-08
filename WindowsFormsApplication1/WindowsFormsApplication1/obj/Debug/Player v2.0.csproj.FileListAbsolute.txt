@@ -23,3 +23,23 @@ C:\Users\Евгений\Documents\Visual Studio 2015\Projects\WindowsFormsApplic
 C:\Users\Евгений\Documents\Visual Studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bass_ape.dll
 C:\Users\Евгений\Documents\Visual Studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bass_mpc.dll
 C:\Users\Евгений\Documents\Visual Studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bass_tta.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\bass.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bassalac.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bassflac.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bassopus.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\basswma.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\basswv.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bass_aac.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bass_ac3.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bass_ape.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bass_mpc.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\plugins\bass_tta.dll
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Player v2.0.csprojResolveAssemblyReference.cache
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Евгений\Documents\player\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\Player v2.0.csproj.GenerateResource.Cache

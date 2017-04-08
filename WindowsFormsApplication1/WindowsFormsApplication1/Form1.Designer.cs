@@ -167,6 +167,7 @@
             // 
             // CoverImage
             // 
+            this.CoverImage.Image = global::WindowsFormsApplication1.Properties.Resources.Cover;
             this.CoverImage.Location = new System.Drawing.Point(412, 36);
             this.CoverImage.Name = "CoverImage";
             this.CoverImage.Size = new System.Drawing.Size(150, 170);

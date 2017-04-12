@@ -33,6 +33,15 @@ namespace WindowsFormsApplication1
         private static int Volume = 100;
         public static int volume { get { return Volume;} }
         /// <summary>
+        /// Состояние потока
+        /// </summary>
+        private static bool isStoped = true;
+        public static bool isstoped { get { return isStoped;} }
+        /// <summary>
+        /// Флаг конца плейлиста
+        /// </summary>
+        public static bool EndOfPlayList;
+        /// <summary>
         /// Дескрипторы подключаемых плагинов
         /// </summary>
         private static readonly List<int> PluginHandlers = new List<int>();
@@ -84,6 +93,7 @@ namespace WindowsFormsApplication1
             {
                 Bass.BASS_ChannelStop(Stream);
                 Bass.BASS_StreamFree(Stream);
+                isStoped = true;
             }
         }
         /// <summary>
@@ -122,6 +132,7 @@ namespace WindowsFormsApplication1
                     }
                 }
             }
+            isStoped = false;
         }
         /// <summary>
         /// длинна композиции
@@ -160,7 +171,22 @@ namespace WindowsFormsApplication1
             if (Bass.BASS_ChannelIsActive(Stream) == BASSActive.BASS_ACTIVE_PLAYING)
             {
                 Bass.BASS_ChannelPause(Stream);
+
             }
+        }
+
+        public static bool SwitchToNext()
+        {
+            if ((Bass.BASS_ChannelIsActive(Stream) == BASSActive.BASS_ACTIVE_STOPPED) && (!isStoped))
+            {
+                if (WorkClass.Files.Count > WorkClass.PlayedIndex + 1)
+                {
+                    EndOfPlayList = false;
+                    return true;
+                }
+                EndOfPlayList = true;
+            }
+            return false;
         }
     }
 }

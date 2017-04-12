@@ -60,7 +60,7 @@ namespace WindowsFormsApplication1
         {
             if ((PlayList.Items.Count != 0) && (PlayList.SelectedIndex != -1))
             {
-                WorkClass.LastPlayed = PlayList.SelectedIndex;
+                WorkClass.LastPlayed = WorkClass.PlayedIndex;
                 WorkClass.PlayedIndex = PlayList.SelectedIndex;
                 this.PlaylistRefresh();
                 string current = WorkClass.Files[WorkClass.PlayedIndex];
@@ -93,6 +93,17 @@ namespace WindowsFormsApplication1
         {
             PlayBar.Value = Player.GetPosOfStream(Player.stream);
             metroLabel1.Text = TimeSpan.FromSeconds(Player.GetPosOfStream(Player.stream)).ToString();
+            if (Player.SwitchToNext())
+            {
+                PlayList.SelectedIndex = WorkClass.PlayedIndex + 1;
+                PlayButton_Click(this,new EventArgs());
+            }
+            if (Player.EndOfPlayList)
+            {
+                StopButton_Click(this,new EventArgs());
+                PlayList.SelectedIndex = WorkClass.PlayedIndex = 0;
+                Player.EndOfPlayList = false;
+            }
         }
 
         private void StopButton_Click(object sender, EventArgs e)

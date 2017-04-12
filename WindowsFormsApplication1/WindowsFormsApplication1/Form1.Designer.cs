@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.PlayButton = new MetroFramework.Controls.MetroButton();
-            this.PauseButton = new MetroFramework.Controls.MetroButton();
-            this.StopButton = new MetroFramework.Controls.MetroButton();
-            this.FilesButton = new MetroFramework.Controls.MetroButton();
             this.PlayBar = new MetroFramework.Controls.MetroTrackBar();
             this.VolumeBar = new MetroFramework.Controls.MetroTrackBar();
             this.PlayList = new System.Windows.Forms.ListBox();
@@ -40,58 +36,26 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.CoverImage = new System.Windows.Forms.PictureBox();
-            this.NameComp = new System.Windows.Forms.Label();
-            this.Raiting = new System.Windows.Forms.Label();
-            this.Channels = new System.Windows.Forms.Label();
+            this.FilesButton = new MetroFramework.Controls.MetroButton();
+            this.StopButton = new MetroFramework.Controls.MetroButton();
+            this.PauseButton = new MetroFramework.Controls.MetroButton();
+            this.PlayButton = new MetroFramework.Controls.MetroButton();
+            this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Album = new System.Windows.Forms.Label();
+            this.Channels = new System.Windows.Forms.Label();
+            this.Raiting = new System.Windows.Forms.Label();
+            this.NameComp = new System.Windows.Forms.Label();
+            this.CoverImage = new System.Windows.Forms.PictureBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.PlayListsArray = new System.Windows.Forms.ListBox();
+            this.OkButton = new MetroFramework.Controls.MetroButton();
+            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroTabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CoverImage)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // PlayButton
-            // 
-            this.PlayButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Play;
-            this.PlayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PlayButton.Location = new System.Drawing.Point(23, 331);
-            this.PlayButton.Name = "PlayButton";
-            this.PlayButton.Size = new System.Drawing.Size(30, 24);
-            this.PlayButton.TabIndex = 0;
-            this.PlayButton.UseSelectable = true;
-            this.PlayButton.Click += new System.EventHandler(this.PlayButton_Click);
-            // 
-            // PauseButton
-            // 
-            this.PauseButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Pause;
-            this.PauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.PauseButton.Location = new System.Drawing.Point(59, 331);
-            this.PauseButton.Name = "PauseButton";
-            this.PauseButton.Size = new System.Drawing.Size(30, 24);
-            this.PauseButton.TabIndex = 1;
-            this.PauseButton.UseMnemonic = false;
-            this.PauseButton.UseSelectable = true;
-            this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
-            // 
-            // StopButton
-            // 
-            this.StopButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Stop;
-            this.StopButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.StopButton.Location = new System.Drawing.Point(95, 331);
-            this.StopButton.Name = "StopButton";
-            this.StopButton.Size = new System.Drawing.Size(30, 24);
-            this.StopButton.TabIndex = 2;
-            this.StopButton.UseSelectable = true;
-            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
-            // 
-            // FilesButton
-            // 
-            this.FilesButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.AddFiles;
-            this.FilesButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.FilesButton.Location = new System.Drawing.Point(532, 331);
-            this.FilesButton.Name = "FilesButton";
-            this.FilesButton.Size = new System.Drawing.Size(30, 24);
-            this.FilesButton.TabIndex = 3;
-            this.FilesButton.UseSelectable = true;
-            this.FilesButton.Click += new System.EventHandler(this.FilesButton_Click);
             // 
             // PlayBar
             // 
@@ -165,62 +129,197 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // CoverImage
+            // FilesButton
             // 
-            this.CoverImage.Image = global::WindowsFormsApplication1.Properties.Resources.Cover;
-            this.CoverImage.Location = new System.Drawing.Point(412, 36);
-            this.CoverImage.Name = "CoverImage";
-            this.CoverImage.Size = new System.Drawing.Size(150, 170);
-            this.CoverImage.TabIndex = 10;
-            this.CoverImage.TabStop = false;
+            this.FilesButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.AddFiles;
+            this.FilesButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.FilesButton.Location = new System.Drawing.Point(532, 331);
+            this.FilesButton.Name = "FilesButton";
+            this.FilesButton.Size = new System.Drawing.Size(30, 24);
+            this.FilesButton.TabIndex = 3;
+            this.FilesButton.UseSelectable = true;
+            this.FilesButton.Click += new System.EventHandler(this.FilesButton_Click);
             // 
-            // NameComp
+            // StopButton
             // 
-            this.NameComp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.NameComp.Location = new System.Drawing.Point(412, 207);
-            this.NameComp.Name = "NameComp";
-            this.NameComp.Size = new System.Drawing.Size(150, 16);
-            this.NameComp.TabIndex = 11;
-            this.NameComp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.StopButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Stop;
+            this.StopButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.StopButton.Location = new System.Drawing.Point(95, 331);
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Size = new System.Drawing.Size(30, 24);
+            this.StopButton.TabIndex = 2;
+            this.StopButton.UseSelectable = true;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
-            // Raiting
+            // PauseButton
             // 
-            this.Raiting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.Raiting.Location = new System.Drawing.Point(409, 250);
-            this.Raiting.Name = "Raiting";
-            this.Raiting.Size = new System.Drawing.Size(153, 14);
-            this.Raiting.TabIndex = 12;
-            this.Raiting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PauseButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Pause;
+            this.PauseButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PauseButton.Location = new System.Drawing.Point(59, 331);
+            this.PauseButton.Name = "PauseButton";
+            this.PauseButton.Size = new System.Drawing.Size(30, 24);
+            this.PauseButton.TabIndex = 1;
+            this.PauseButton.UseMnemonic = false;
+            this.PauseButton.UseSelectable = true;
+            this.PauseButton.Click += new System.EventHandler(this.PauseButton_Click);
             // 
-            // Channels
+            // PlayButton
             // 
-            this.Channels.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.Channels.Location = new System.Drawing.Point(415, 236);
-            this.Channels.Name = "Channels";
-            this.Channels.Size = new System.Drawing.Size(147, 12);
-            this.Channels.TabIndex = 13;
-            this.Channels.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.PlayButton.BackgroundImage = global::WindowsFormsApplication1.Properties.Resources.Play;
+            this.PlayButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PlayButton.Location = new System.Drawing.Point(23, 331);
+            this.PlayButton.Name = "PlayButton";
+            this.PlayButton.Size = new System.Drawing.Size(30, 24);
+            this.PlayButton.TabIndex = 0;
+            this.PlayButton.UseSelectable = true;
+            this.PlayButton.Click += new System.EventHandler(this.PlayButton_Click);
+            // 
+            // metroTabControl1
+            // 
+            this.metroTabControl1.Controls.Add(this.tabPage1);
+            this.metroTabControl1.Controls.Add(this.tabPage2);
+            this.metroTabControl1.Location = new System.Drawing.Point(389, 20);
+            this.metroTabControl1.Name = "metroTabControl1";
+            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.Size = new System.Drawing.Size(179, 305);
+            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.White;
+            this.metroTabControl1.TabIndex = 15;
+            this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabControl1.UseSelectable = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.tabPage1.Controls.Add(this.Album);
+            this.tabPage1.Controls.Add(this.Channels);
+            this.tabPage1.Controls.Add(this.Raiting);
+            this.tabPage1.Controls.Add(this.NameComp);
+            this.tabPage1.Controls.Add(this.CoverImage);
+            this.tabPage1.Location = new System.Drawing.Point(4, 38);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(171, 263);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Info";
             // 
             // Album
             // 
             this.Album.BackColor = System.Drawing.Color.Transparent;
             this.Album.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.Album.Location = new System.Drawing.Point(415, 222);
+            this.Album.Location = new System.Drawing.Point(13, 210);
             this.Album.Name = "Album";
-            this.Album.Size = new System.Drawing.Size(147, 14);
-            this.Album.TabIndex = 14;
+            this.Album.Size = new System.Drawing.Size(150, 14);
+            this.Album.TabIndex = 19;
             this.Album.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Channels
+            // 
+            this.Channels.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.Channels.Location = new System.Drawing.Point(13, 224);
+            this.Channels.Name = "Channels";
+            this.Channels.Size = new System.Drawing.Size(149, 12);
+            this.Channels.TabIndex = 18;
+            this.Channels.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Raiting
+            // 
+            this.Raiting.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.Raiting.Location = new System.Drawing.Point(13, 237);
+            this.Raiting.Name = "Raiting";
+            this.Raiting.Size = new System.Drawing.Size(149, 14);
+            this.Raiting.TabIndex = 17;
+            this.Raiting.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // NameComp
+            // 
+            this.NameComp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.NameComp.Location = new System.Drawing.Point(13, 195);
+            this.NameComp.Name = "NameComp";
+            this.NameComp.Size = new System.Drawing.Size(150, 16);
+            this.NameComp.TabIndex = 16;
+            this.NameComp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CoverImage
+            // 
+            this.CoverImage.Image = global::WindowsFormsApplication1.Properties.Resources.Cover;
+            this.CoverImage.Location = new System.Drawing.Point(13, 23);
+            this.CoverImage.Name = "CoverImage";
+            this.CoverImage.Size = new System.Drawing.Size(150, 170);
+            this.CoverImage.TabIndex = 15;
+            this.CoverImage.TabStop = false;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.tabPage2.Controls.Add(this.metroTextBox1);
+            this.tabPage2.Controls.Add(this.OkButton);
+            this.tabPage2.Controls.Add(this.PlayListsArray);
+            this.tabPage2.Location = new System.Drawing.Point(4, 38);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(171, 263);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "PlayLists";
+            // 
+            // PlayListsArray
+            // 
+            this.PlayListsArray.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.PlayListsArray.Font = new System.Drawing.Font("AA American Captain", 8.249999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PlayListsArray.ForeColor = System.Drawing.Color.White;
+            this.PlayListsArray.FormattingEnabled = true;
+            this.PlayListsArray.ItemHeight = 14;
+            this.PlayListsArray.Location = new System.Drawing.Point(15, 19);
+            this.PlayListsArray.Name = "PlayListsArray";
+            this.PlayListsArray.Size = new System.Drawing.Size(143, 144);
+            this.PlayListsArray.TabIndex = 17;
+            // 
+            // OkButton
+            // 
+            this.OkButton.Location = new System.Drawing.Point(80, 203);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(75, 23);
+            this.OkButton.TabIndex = 18;
+            this.OkButton.Text = "OK";
+            this.OkButton.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.OkButton.UseSelectable = true;
+            // 
+            // metroTextBox1
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBox1.CustomButton.Image = null;
+            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(121, 1);
+            this.metroTextBox1.CustomButton.Name = "";
+            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox1.CustomButton.TabIndex = 1;
+            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox1.CustomButton.UseSelectable = true;
+            this.metroTextBox1.CustomButton.Visible = false;
+            this.metroTextBox1.Lines = new string[0];
+            this.metroTextBox1.Location = new System.Drawing.Point(15, 171);
+            this.metroTextBox1.MaxLength = 32767;
+            this.metroTextBox1.Name = "metroTextBox1";
+            this.metroTextBox1.PasswordChar = '\0';
+            this.metroTextBox1.PromptText = "New playlist name";
+            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox1.SelectedText = "";
+            this.metroTextBox1.SelectionLength = 0;
+            this.metroTextBox1.SelectionStart = 0;
+            this.metroTextBox1.ShortcutsEnabled = true;
+            this.metroTextBox1.Size = new System.Drawing.Size(143, 23);
+            this.metroTextBox1.TabIndex = 19;
+            this.metroTextBox1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTextBox1.UseSelectable = true;
+            this.metroTextBox1.WaterMark = "New playlist name";
+            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 382);
-            this.Controls.Add(this.Album);
-            this.Controls.Add(this.Channels);
-            this.Controls.Add(this.Raiting);
-            this.Controls.Add(this.NameComp);
-            this.Controls.Add(this.CoverImage);
+            this.Controls.Add(this.metroTabControl1);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.PlayList);
@@ -234,7 +333,10 @@
             this.Resizable = false;
             this.Style = MetroFramework.MetroColorStyle.White;
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CoverImage)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,11 +355,17 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.PictureBox CoverImage;
-        private System.Windows.Forms.Label NameComp;
-        private System.Windows.Forms.Label Raiting;
-        private System.Windows.Forms.Label Channels;
+        private MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label Album;
+        private System.Windows.Forms.Label Channels;
+        private System.Windows.Forms.Label Raiting;
+        private System.Windows.Forms.Label NameComp;
+        private System.Windows.Forms.PictureBox CoverImage;
+        private MetroFramework.Controls.MetroButton OkButton;
+        private System.Windows.Forms.ListBox PlayListsArray;
+        private MetroFramework.Controls.MetroTextBox metroTextBox1;
     }
 }
 

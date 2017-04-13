@@ -13,6 +13,8 @@ namespace WindowsFormsApplication1
         /// текущий плейлист
         /// </summary>
         public static string CurrentPlayList;
+
+        public static int CurrentPlayListIndex;
         /// <summary>
         /// список всех плейлистов
         /// </summary>
@@ -23,7 +25,7 @@ namespace WindowsFormsApplication1
         public static void CreateNewPlayList()
         {
             PlayListsArray.Add(CurrentPlayList);
-            File.Create(CurrentPlayList + ".txt");
+            File.Create(CurrentPlayList + ".txt").Close();
         }
         /// <summary>
         /// открыть плейлист
@@ -54,11 +56,12 @@ namespace WindowsFormsApplication1
         /// <summary>
         /// открыть список плейлистов
         /// </summary>
-        public static void OpenPlayListsArray()
+        public static string[] OpenPlayListsArray()
         {
             string[] temp = File.ReadAllLines("PlayLists.txt");
             PlayListsArray.Clear();
             PlayListsArray.AddRange(temp);
+            return temp;
         }
     }
 }

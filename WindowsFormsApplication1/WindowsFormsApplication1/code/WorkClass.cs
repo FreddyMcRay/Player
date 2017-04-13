@@ -8,7 +8,6 @@ namespace WindowsFormsApplication1
 {
     class WorkClass
     {
-        public static int LastPlayed;
         public static int PlayedIndex;
         /// <summary>
         /// Путь к данному приложению

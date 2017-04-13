@@ -6,12 +6,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using MetroFramework;
 using MetroFramework.Components;
 using MetroFramework.Forms;
 using MetroFramework.Properties;
 using Un4seen.Bass;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace WindowsFormsApplication1
 {
@@ -39,6 +41,8 @@ namespace WindowsFormsApplication1
             openFileDialog1.Title = "Music browser";
             Player.InitBass(Player.hz);
             WorkClass.PlayedIndex = 0;
+            PlayListsArray.Items.AddRange(PlayLists.OpenPlayListsArray());
+            
         }
 
         private void FilesButton_Click(object sender, EventArgs e)
@@ -54,15 +58,18 @@ namespace WindowsFormsApplication1
                 TagReader TR = new TagReader(file);
                 PlayList.Items.Add(TR.artist + "-" + TR.title);
             }
+            if (!string.IsNullOrEmpty(PlayLists.CurrentPlayList))
+            {
+                PlayLists.SavePlayList(WorkClass.Files);
+            }
         }
 
         private void PlayButton_Click(object sender, EventArgs e)
         {
-            if ((PlayList.Items.Count != 0) && (PlayList.SelectedIndex != -1))
+            if (PlayList.SelectedIndex != -1)
             {
-                WorkClass.LastPlayed = WorkClass.PlayedIndex;
                 WorkClass.PlayedIndex = PlayList.SelectedIndex;
-                this.PlaylistRefresh();
+                PlayList.Refresh();
                 string current = WorkClass.Files[WorkClass.PlayedIndex];
                 Player.Play(current, Player.volume);
                 this.SetInfo();
@@ -76,7 +83,7 @@ namespace WindowsFormsApplication1
             {
                 if (PlayList.Items.Count != 0)
                 {
-                    this.PlaylistRefresh();
+                    PlayList.Refresh();
                     this.SetInfo();
                     string current = WorkClass.Files[WorkClass.PlayedIndex];
                     Player.Play(current, Player.volume);
@@ -91,8 +98,18 @@ namespace WindowsFormsApplication1
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            PlayBar.Value = Player.GetPosOfStream(Player.stream);
-            metroLabel1.Text = TimeSpan.FromSeconds(Player.GetPosOfStream(Player.stream)).ToString();
+            try
+            {
+                PlayBar.Value = Player.GetPosOfStream(Player.stream);
+                metroLabel1.Text = TimeSpan.FromSeconds(Player.GetPosOfStream(Player.stream)).ToString();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                StopButton_Click(this, new EventArgs());
+                PlayList.SelectedIndex = WorkClass.PlayedIndex = 0;
+                Player.EndOfPlayList = false;
+            }
+
             if (Player.SwitchToNext())
             {
                 PlayList.SelectedIndex = WorkClass.PlayedIndex + 1;
@@ -100,7 +117,7 @@ namespace WindowsFormsApplication1
             }
             if (Player.EndOfPlayList)
             {
-                StopButton_Click(this,new EventArgs());
+                StopButton_Click(this, new EventArgs());
                 PlayList.SelectedIndex = WorkClass.PlayedIndex = 0;
                 Player.EndOfPlayList = false;
             }
@@ -128,14 +145,6 @@ namespace WindowsFormsApplication1
         private void VolumeBar_Scroll(object sender, ScrollEventArgs e)
         {
             Player.SetVolumeToStream(Player.stream,VolumeBar.Value);
-        }
-
-        private void PlaylistRefresh()
-        {
-            string temp;
-            temp = PlayList.Items[WorkClass.LastPlayed].ToString();
-            PlayList.Items.RemoveAt(WorkClass.LastPlayed);
-            PlayList.Items.Insert(WorkClass.LastPlayed,temp);
         }
 
         private void PlayList_DrawItem(object sender, DrawItemEventArgs e)
@@ -175,6 +184,72 @@ namespace WindowsFormsApplication1
             }
         }
 
-        
+        private void OkButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(NewPlayListName.Text))
+            {
+                StopButton_Click(this,new EventArgs());
+                PlayLists.CurrentPlayList = NewPlayListName.Text;
+                PlayLists.CreateNewPlayList();
+                PlayList.Items.Clear();
+                PlayLists.SavePlayListsArray();
+                PlayListsArray.Items.Add(PlayLists.CurrentPlayList);
+                PlayLists.CurrentPlayListIndex = PlayListsArray.Items.IndexOf(PlayLists.CurrentPlayList);
+                PlayLists.SavePlayListsArray();
+                NewPlayListName.Clear();
+                WorkClass.PlayedIndex = 0;
+            }
+            else
+            {
+                if (PlayListsArray.SelectedIndex != -1)
+                {
+                    StopButton_Click(this, new EventArgs());
+                    PlayLists.CurrentPlayList = PlayListsArray.Items[PlayListsArray.SelectedIndex].ToString();
+                    PlayLists.CurrentPlayListIndex = PlayListsArray.SelectedIndex;
+                    PlayList.Items.Clear();
+                    WorkClass.Files.Clear();
+                    WorkClass.Files.AddRange(PlayLists.OpenPlayList());
+                    foreach (string file in WorkClass.Files)
+                    {
+                        TagReader TR = new TagReader(file);
+                        PlayList.Items.Add(TR.artist + "-" + TR.title);
+                    }
+                    WorkClass.PlayedIndex = 0;
+                }
+                else
+                {
+                    if (PlayListsArray.Items.Count != 0)
+                    {
+                        StopButton_Click(this, new EventArgs());
+                        PlayLists.CurrentPlayList = PlayListsArray.Items[0].ToString();
+                        PlayLists.CurrentPlayListIndex = 0;
+                        PlayList.Items.Clear();
+                        WorkClass.Files.Clear();
+                        WorkClass.Files.AddRange(PlayLists.OpenPlayList());
+                        foreach (string file in WorkClass.Files)
+                        {
+                            TagReader TR = new TagReader(file);
+                            PlayList.Items.Add(TR.artist + "-" + TR.title);
+                        }
+                        WorkClass.PlayedIndex = 0;
+                    }
+                }
+            }
+            PlayListsArray.Refresh();
+        }
+
+        private void PlayListsArray_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            
+            if (e.Index != -1)
+            {
+                e.DrawBackground();
+                Brush MyBrush = Brushes.White;
+                if (e.Index == PlayLists.CurrentPlayListIndex)
+                    MyBrush = Brushes.Red;
+                e.Graphics.DrawString(((ListBox)sender).Items[e.Index].ToString(), e.Font, MyBrush, e.Bounds,
+                    StringFormat.GenericDefault);
+            }
+        }
     }
 }
